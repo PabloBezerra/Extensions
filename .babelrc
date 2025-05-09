@@ -1,0 +1,7 @@
+{
+    "presets": [
+  ["@babel/preset-env", {
+  "target": "<0.25%, not dead, not op_mini all"
+}]
+]
+}
