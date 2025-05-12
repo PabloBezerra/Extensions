@@ -6,14 +6,19 @@ import { Controller } from "./Controller.js";
 import { View } from "./View.js";
 import { Server } from "./Server.js";
 
-const controller = new Controller();
-const view = new View();
-const server = new Server();
+export const controller = new Controller();
+export const view = new View();
+export const server = new Server();
 
 //DOM elements
 const head = document.querySelector('#head');
 const nav = document.querySelector('nav');
 const extensions = document.querySelector('#extension-list');
+
+//initialization
+document.addEventListener('DOMContentLoaded', e => {
+    controller.init();
+})
 
 //event listeners
 head.addEventListener('click', e  => {

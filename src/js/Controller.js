@@ -1,8 +1,10 @@
+import { view, server } from "./index.js";
+
 export class Controller {
     constructor() {
     }
   
-    getName() {
-      return this.name;
+    init() {
+      server.getData()
     }
   }
