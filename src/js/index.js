@@ -22,13 +22,13 @@ document.addEventListener('DOMContentLoaded', e => {
 
 //event listeners
 head.addEventListener('click', e  => {
-    view.print(e.target.id);
+    console.log(e.currentTarget.id);
 })
 
 nav.addEventListener('click', e => {
-    view.print(e.target)
+    controller.filter(e.target.id);
 })
 
 extensions.addEventListener('click', e => {
-    view.print(e.target.id);
+    console.log(e.target.id);
 })
