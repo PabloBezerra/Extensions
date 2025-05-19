@@ -6,29 +6,35 @@ import { Controller } from "./Controller.js";
 import { View } from "./View.js";
 import { Server } from "./Server.js";
 
-export const controller = new Controller();
-export const view = new View();
-export const server = new Server();
-
 //DOM elements
+const main = document.querySelector('main');
 const head = document.querySelector('#head');
 const nav = document.querySelector('nav');
 const extensions = document.querySelector('#extension-list');
+
+//instantiations
+export const controller = new Controller();
+export const view = new View(extensions, nav.querySelectorAll('li'), main);
+export const server = new Server();
 
 //initialization
 document.addEventListener('DOMContentLoaded', e => {
     controller.init();
 })
 
-//event listeners
+//Event Listeners
+
+// change theme
 head.addEventListener('click', e  => {
-    console.log(e.currentTarget.id);
+    if (e.currentTarget.id) controller.switchTheme();
 })
 
+// extensions active filter
 nav.addEventListener('click', e => {
-    controller.filter(e.target.id);
+    if(e.target.id) controller.filterExtensions(e.target.id);
 })
 
+// 
 extensions.addEventListener('click', e => {
-    console.log(e.target.id);
+    if(e.target) controller.editExtensions(e.target);
 })

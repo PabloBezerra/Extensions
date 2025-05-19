@@ -2,17 +2,39 @@ import { view, server } from "./index.js";
 
 export class Controller {
   constructor() {
-    this.data = []
+    this.currentData = []
+    this.lastActived = 'all';
   }
 
   init() {
-    this.data = server.getData()
-    view.print(this.data)
+    this.updateData(true);
+    view.activeNav(this.lastActived);
   }
   
-  filter(dom){
-    this.data = server.filter(dom)
+  filterExtensions(dom){
+    this.currentData = server.filter(dom)
+    this.updateData();
+    view.activeNav(dom)
+    this.lastActived = dom;
+  }
+
+  editExtensions(dom){
+    if(dom.tagName === 'BUTTON'){
+      server.remove(dom.parentElement.id)
+      this.filterExtensions(this.lastActived);
+    }
+    if(dom.tagName === 'INPUT'){
+      server.actived(dom.parentElement.id);
+    }
+  }
+
+  updateData(upServer = false){
+    if(upServer) this.currentData = server.getData();
     view.clear();
-    view.print(this.data)
+    view.print(this.currentData)
+  }
+
+  switchTheme(){
+    view.switchTheme();
   }
 }

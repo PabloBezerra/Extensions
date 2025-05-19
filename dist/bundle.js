@@ -4429,9 +4429,9 @@ function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), 
 function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
 function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
 var View = /*#__PURE__*/function () {
-  function View() {
+  function View(list) {
     _classCallCheck(this, View);
-    this.list = document.querySelector('#extension-list');
+    this.list = list;
   }
   return _createClass(View, [{
     key: "print",
@@ -4468,7 +4468,7 @@ var View = /*#__PURE__*/function () {
   }, {
     key: "clear",
     value: function clear() {
-      this.list.innerHTML = '';
+      this.list.innerText = '';
     }
   }]);
 }();
@@ -4498,14 +4498,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var controller = new _Controller_js__WEBPACK_IMPORTED_MODULE_1__.Controller();
-var view = new _View_js__WEBPACK_IMPORTED_MODULE_2__.View();
-var server = new _Server_js__WEBPACK_IMPORTED_MODULE_3__.Server();
 
 //DOM elements
 var head = document.querySelector('#head');
 var nav = document.querySelector('nav');
 var extensions = document.querySelector('#extension-list');
+var controller = new _Controller_js__WEBPACK_IMPORTED_MODULE_1__.Controller();
+var view = new _View_js__WEBPACK_IMPORTED_MODULE_2__.View(extensions);
+var server = new _Server_js__WEBPACK_IMPORTED_MODULE_3__.Server();
 
 //initialization
 document.addEventListener('DOMContentLoaded', function (e) {
@@ -4517,6 +4517,7 @@ head.addEventListener('click', function (e) {
   console.log(e.currentTarget.id);
 });
 nav.addEventListener('click', function (e) {
+  debugger;
   controller.filter(e.target.id);
 });
 extensions.addEventListener('click', function (e) {

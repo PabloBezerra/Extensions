@@ -1,6 +1,8 @@
 export class View{
-    constructor(){
-        this.list = document.querySelector('#extension-list');
+    constructor(list, nav, main){
+        this.list = list;
+        this.nav = nav;
+        this.main = main;
     }
     
     print(data){
@@ -27,7 +29,7 @@ export class View{
             divInfo.appendChild(p);
 
             div.classList.add('extension-card');
-            div.id = e.name;
+            div.id = e.name.replace(" ", "-")
             div.appendChild(img);
             div.appendChild(divInfo);
             div.appendChild(button);
@@ -38,6 +40,29 @@ export class View{
     }
 
     clear(){
-        this.list.innerHTML = '';
+        this.list.innerText = '';
     }
+
+    activeNav(id){
+        this.nav.forEach(e => {
+            if(e.id === id){
+                e.classList.add('active');
+            }else{
+                e.classList.remove('active');
+            }
+        });
+    }
+
+    switchTheme(){
+        if(this.main.classList.contains('dark-theme')){
+            this.main.classList.remove('dark-theme');
+            this.main.classList.add('light-theme');
+            return;
+        }
+        if(this.main.classList.contains('light-theme')){
+            this.main.classList.remove('light-theme');
+            this.main.classList.add('dark-theme');
+            return;
+        }
+    }   
 }

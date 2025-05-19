@@ -2,8 +2,8 @@ const axios = require('axios');
 
 export class Server{
     constructor(){
-        this.url = '../data.json'
-        this.data = [];
+        this.url = 'data.json'
+        this.mainData = [];
     }
 
     getData(){
@@ -11,7 +11,7 @@ export class Server{
             this.request();
         }
         this.recover();
-        return this.data;
+        return this.mainData;
     }
 
     request(){
@@ -27,23 +27,38 @@ export class Server{
 
     recover(){
         if(localStorage.getItem('data') !== null){
-            this.data = JSON.parse(localStorage.getItem('data'));
+            this.mainData = JSON.parse(localStorage.getItem('data'));
         }else{
             console.log('No data found');
         }
     }
 
     filter(dom){
-        const f = []
+        let array = [];
         if(dom === 'all'){
-            f.push(this.data);
+            array = this.mainData;
         }
         if(dom === 'active'){
-            f.push(this.data.filter(e => e.isActive));
+            array = this.mainData.filter(e => e.isActive);
         }
         if(dom === 'inactive'){
-            f.push(this.data.filter(e => !e.isActive));
+            array = this.mainData.filter(e => !e.isActive);
         }
-        return f
+        return array
+    }
+
+    remove(id){
+        this.mainData = this.mainData.filter(e => e.name.replace(" ", "-") !== id);
+        localStorage.setItem('data', JSON.stringify(this.mainData));
+    }
+
+    actived(id){
+        this.mainData.forEach(e => {
+            if(e.name.replace(" ", "-") === id){
+                e.isActive = !e.isActive;
+            }
+        });
+        localStorage.setItem('data', JSON.stringify(this.mainData));
+        this.recover();
     }
 }
