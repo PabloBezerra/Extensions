@@ -7,9 +7,11 @@ export class View{
     
     print(data){
         data.forEach(e => {
-            const div = document.createElement('div');
-            const img = document.createElement('img');
             const divInfo = document.createElement('div');
+            const divDescrition = document.createElement('div');
+            const divAction = document.createElement('div');
+            const divExtensionCard = document.createElement('div');
+            const img = document.createElement('img');
             const h3 = document.createElement('h3');
             const p = document.createElement('p');
             const button = document.createElement('button');
@@ -18,24 +20,28 @@ export class View{
             img.src = e.logo;
             h3.innerText = e.name;
             p.innerText = e.description;
-            p.id = 'description';
             button.innerText = 'Remove';
             input.type = 'checkbox';
             input.id = 'checkbox';
             input.checked = e.isActive;
 
-            divInfo.id = 'info';
-            divInfo.appendChild(h3);
-            divInfo.appendChild(p);
+            divInfo.classList.add('info');
+            divDescrition.classList.add('description');
+            divAction.classList.add('actions');
+            divExtensionCard.classList.add('extension-card');
+            divExtensionCard.id = e.name.replace(" ", "-")
 
-            div.classList.add('extension-card');
-            div.id = e.name.replace(" ", "-")
-            div.appendChild(img);
-            div.appendChild(divInfo);
-            div.appendChild(button);
-            div.appendChild(input);
+            divDescrition.appendChild(h3);
+            divDescrition.appendChild(p);
+            divInfo.appendChild(img);
+            divInfo.appendChild(divDescrition);
+            divAction.appendChild(button);
+            divAction.appendChild(input);
 
-            this.list.appendChild(div);
+            divExtensionCard.appendChild(divInfo);
+            divExtensionCard.appendChild(divAction);
+
+            this.list.appendChild(divExtensionCard);
         });
     }
 

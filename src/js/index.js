@@ -36,5 +36,5 @@ nav.addEventListener('click', e => {
 
 // 
 extensions.addEventListener('click', e => {
-    if(e.target) controller.editExtensions(e.target);
+    if(e.target.parentElement.className === "actions") controller.editExtensions(e.target);
 })

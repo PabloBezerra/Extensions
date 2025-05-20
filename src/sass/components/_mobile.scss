@@ -17,7 +17,7 @@ main.dark-theme{
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        background-color: color-transparent($Neutral_0, 80%);
+        background-color: color-transparent($Neutral_0, 30%);
         border-radius: 10px;
         padding: 10px;
 
@@ -36,7 +36,7 @@ main.dark-theme{
         #switch-theme{
             width: 40px;
             height: 40px;
-            background-color: $Neutral_600;
+            background-color:color-transparent($Neutral_0, 30%);
             padding: 5px;
             border-radius: 10px;
             @include flex();
@@ -108,29 +108,41 @@ main.dark-theme{
             border: 1px solid $Neutral_600;
             background-color: $Neutral_700;
             padding: 20px;
-            @include flex(row,space-between,center);
-            flex-wrap: wrap;
+            @include flex(column,space-between,center);
             margin-bottom: 15px;
 
-            img{
-                flex-basis: 20%;
+            .info{
+                width: 100%;
+                height: auto;
+                @include flex(row,space-around,center);
+                img{
+                    width: 50px;
+                    height: 50px;
+                }
+                
+                .description{
+                    width: auto;
+                    height: auto;
+                
+                    h3{}
+    
+                    p{}
+                }
+            }
+
+            .actions{
+
+                button{
+                    flex: 1 1 45%;
+                    cursor: pointer;
+                }
+    
+                #switch{
+                    flex: 1 1 45%;
+                    cursor: pointer;
+                }
             }
             
-            #info{
-                flex-basis: 80%;
-                h3{}
-
-                #description{}
-            }
-
-            button{
-                flex-basis: 80%;
-                cursor: pointer;
-            }
-
-            #switch{
-                cursor: pointer;
-            }
         }
     }
 }

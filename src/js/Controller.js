@@ -20,11 +20,11 @@ export class Controller {
 
   editExtensions(dom){
     if(dom.tagName === 'BUTTON'){
-      server.remove(dom.parentElement.id)
+      server.remove(dom.parentElement.parentElement.id)
       this.filterExtensions(this.lastActived);
     }
     if(dom.tagName === 'INPUT'){
-      server.actived(dom.parentElement.id);
+      server.actived(dom.parentElement.parentElement.id);
     }
   }
 
