@@ -31,7 +31,11 @@ head.addEventListener('click', e  => {
 
 // extensions active filter
 nav.addEventListener('click', e => {
-    if(e.target.id) controller.filterExtensions(e.target.id);
+    if(e.target.id) controller.filterExtensions(e.target);
+})
+
+nav.addEventListener('input', e => {
+    controller.search(e.target.value);
 })
 
 // 

@@ -12,19 +12,33 @@ export class Controller {
   }
   
   filterExtensions(dom){
-    this.currentData = server.filter(dom)
-    this.updateData();
-    view.activeNav(dom)
-    this.lastActived = dom;
+    if(dom.id === 'search'||dom.id === 'close') {
+      view.addRemoveClass(dom.parentElement, 'search')
+      this.filterExtensions(this.lastActived);
+      return;
+    }
+    if(dom.id !== 'search-input') {
+      this.currentData = server.filter(dom.id)
+      this.updateData();
+      view.activeNav(dom.id)
+      this.lastActived = dom;
+    }
   }
 
   editExtensions(dom){
     if(dom.tagName === 'BUTTON'){
       server.remove(dom.parentElement.parentElement.id)
-      this.filterExtensions(this.lastActived);
+      this.filterExtensions(this.lastActived.id);
     }
     if(dom.tagName === 'INPUT'){
       server.actived(dom.parentElement.parentElement.id);
+    }
+  }
+
+  search(msn){
+    if(msn.length !== 0){ 
+      this.currentData = server.filter('search', msn.toLowerCase());
+      this.updateData();
     }
   }
 

@@ -53,9 +53,9 @@ export class View{
         this.nav.forEach(e => {
             if(e.id === id){
                 e.classList.add('active');
-            }else{
-                e.classList.remove('active');
+                return
             }
+            e.classList.remove('active');
         });
     }
 
@@ -71,4 +71,12 @@ export class View{
             return;
         }
     }   
+
+    addRemoveClass(dom, className){
+        if(dom.classList.contains(className)){
+            dom.classList.remove(className);
+        }else{
+            dom.classList.add(className);
+        }
+    }
 }

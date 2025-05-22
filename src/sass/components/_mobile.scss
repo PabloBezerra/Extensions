@@ -1,12 +1,14 @@
 @use "variables" as *;
 
-main.dark-theme{
+main{
     height: auto;
     min-height: 100vh;
     width: 100vw;
     display: flex;
+    font: $font;
     flex-direction: column;
     align-items: center;
+    justify-content: start;
     background-image: $Dark_Gradient;
     color: $Neutral_0;
     padding: 20px;
@@ -62,7 +64,7 @@ main.dark-theme{
         margin-top: 20px;
     }
 
-    nav{
+    nav.filter{
         width: 100%;
         height: auto;
         margin-top: 20px;
@@ -92,14 +94,58 @@ main.dark-theme{
                 }
             }
         }
+
+        #search{
+            padding: 2px;
+            border-radius: 50%;
+            border: 1px solid $Neutral_600;
+            background-color: $Neutral_700;
+            cursor: pointer;
+        }
+
+        input{
+            appearance: none;
+            width: 0px;
+            height: 0px;
+            padding: 5px;
+            filter:opacity(0);
+            border-radius: 20px;
+            border: 1px solid $Neutral_600;
+            background-color: $Neutral_700;
+            color: $Neutral_0;
+        }
+
+        #close{
+            display: none;
+            cursor: pointer;
+        }
+
+        &.search{
+            ul{
+                width: 0px;
+                height: 0px;
+                filter:opacity(0)
+            }
+            
+            input{
+                display: flex;
+                width: 80%;
+                height: 40px;
+                filter:opacity(1)
+            }
+
+            #close{display: flex;}
+
+        }
     }
 
     section#extension-list{
         width: 95%;
         height: auto;
+        max-height: calc(100vh - 200px);
         margin-top: 20px;
         @include flex(column,space-around,center);
-        overflow: hidden;
+        overflow: auto;
 
         .extension-card{
             width: 100%;
@@ -114,35 +160,148 @@ main.dark-theme{
             .info{
                 width: 100%;
                 height: auto;
-                @include flex(row,space-around,center);
+                @include flex(row,space-between,center);
+                align-items: start;
                 img{
-                    width: 50px;
-                    height: 50px;
+                    width: 55px;
+                    height: 55px;
                 }
                 
                 .description{
-                    width: auto;
+                    width: 75%;
                     height: auto;
-                
-                    h3{}
-    
-                    p{}
                 }
             }
 
             .actions{
+                width: 100%;
+                @include flex(row,space-between,center);
+                margin-top: 20px;
 
                 button{
-                    flex: 1 1 45%;
+                    width: 100px;
+                    height: 40px;
+                    background-color: transparent;
+                    border: 2px solid $Neutral_600;
+                    border-radius: 20px;
+                    color: $Neutral_0;
                     cursor: pointer;
                 }
     
-                #switch{
-                    flex: 1 1 45%;
+                input[type="checkbox"]{
+                    appearance: none;
+                    width: 50px;
+                    height: 28px;
+                    background-color: $Neutral_600;
+                    border-radius: 25px;
+                    position: relative;
                     cursor: pointer;
+                    transition: background-color 0.3s ease;
+
+                    &::after {
+                        content: "";
+                        position: absolute;
+                        top: 3.5px;
+                        left: 2px;
+                        width: 21px;
+                        height: 21px;
+                        background-color: $Neutral_0;
+                        border-radius: 50%;
+                        transition: transform 0.3s ease;
+                    }
+                    
+                    &:checked {
+                        background-color: $Red_400;
+                    
+                        &::after {
+                          transform: translateX(25px);
+                        }
+                    }
                 }
             }
+        }
+    }
+
+    &.light-theme{
+        background-image: $Light_Gradient;
+        color: $Neutral_900;
+
+        #head{
+            background-color: $Neutral_0;
             
+            p{
+                color: $Neutral_900;
+            }
+
+            #switch-theme{
+                background-color: $Neutral_100;
+                
+
+                #dark{
+                    display: block;
+                    width: 25px;
+                    height: 25px;
+                }
+
+                #light{
+                    display: none;
+                }
+            }
+        }
+
+        h1{
+            color: $Neutral_900;
+        }
+
+        nav{
+            ul{
+                li{
+                    background-color: $Neutral_0;
+                    border: 1px solid $Neutral_200;
+                }
+            }
+            #search{
+                background-color: $Neutral_0;
+                border: 1px solid $Neutral_200;
+            }
+            input{
+                background-color: $Neutral_0;
+                border: 1px solid $Neutral_200;
+                color: $Neutral_900;
+            }
+        }
+
+        section#extension-list{
+            .extension-card{
+                background-color: $Neutral_0;
+                border: 1px solid $Neutral_200;
+
+                .info{
+                    .description{
+                        h3{
+                            color: $Neutral_900;
+                        }
+                        p{
+                            color: $Neutral_900;
+                        }
+                    }
+                }
+
+                .actions{
+                    button{
+                        background-color: $Neutral_0;
+                        border: 2px solid $Neutral_200;
+                        color: $Neutral_900;
+                    }
+                    input[type="checkbox"]{
+                        background-color: $Neutral_200;
+
+                        &:checked {
+                            background-color: $Red_400;
+                        }
+                    }
+                }
+            }
         }
     }
 }

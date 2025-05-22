@@ -33,18 +33,16 @@ export class Server{
         }
     }
 
-    filter(dom){
-        let array = [];
-        if(dom === 'all'){
-            array = this.mainData;
-        }
-        if(dom === 'active'){
-            array = this.mainData.filter(e => e.isActive);
-        }
-        if(dom === 'inactive'){
-            array = this.mainData.filter(e => !e.isActive);
-        }
-        return array
+    filter(dom, key = ''){
+        const filtros = {
+            all: () => this.mainData,
+            active: () => this.mainData.filter(e => e.isActive),
+            inactive: () => this.mainData.filter(e => !e.isActive),
+            search: ()=> this.mainData.filter(e => e.name.toLowerCase().includes(key))        
+        };
+        const array = filtros[dom] ? filtros[dom]() : [];
+        console.log(array); 
+        return array;
     }
 
     remove(id){
