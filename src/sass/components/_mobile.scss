@@ -2,8 +2,7 @@
 
 main{
     height: auto;
-    min-height: 100vh;
-    width: 100vw;
+    width: 100%;
     display: flex;
     font: $font;
     flex-direction: column;
@@ -19,6 +18,7 @@ main{
         display: flex;
         flex-direction: row;
         justify-content: space-between;
+        align-items: center;
         background-color: color-transparent($Neutral_0, 30%);
         border-radius: 10px;
         padding: 10px;
@@ -106,7 +106,7 @@ main{
         input{
             appearance: none;
             width: 0px;
-            height: 0px;
+            height: 40px;
             padding: 5px;
             filter:opacity(0);
             border-radius: 20px;
@@ -130,7 +130,6 @@ main{
             input{
                 display: flex;
                 width: 80%;
-                height: 40px;
                 filter:opacity(1)
             }
 
@@ -142,14 +141,28 @@ main{
     section#extension-list{
         width: 95%;
         height: auto;
-        max-height: calc(100vh - 200px);
+        min-height: calc(100vh - 200px);
         margin-top: 20px;
         @include flex(column,space-around,center);
         overflow: auto;
 
+        &::-webkit-scrollbar {
+            appearance: none;
+            width: 4px;
+            height: 20px;
+            background-color: transparent;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            appearance: none;
+            background-color: $Neutral_600;
+            border-radius: 10px;
+        }
+
         .extension-card{
             width: 100%;
-            height: auto;
+            max-width: 350px;
+            height: 200px;
             border-radius: 20px;
             border: 1px solid $Neutral_600;
             background-color: $Neutral_700;
@@ -272,6 +285,9 @@ main{
         }
 
         section#extension-list{
+            &::-webkit-scrollbar-thumb{
+                background-color: $Neutral_200;
+            }
             .extension-card{
                 background-color: $Neutral_0;
                 border: 1px solid $Neutral_200;

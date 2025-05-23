@@ -1,10 +1,60 @@
 @use "variables" as *;
 
-main{
-    
-   @include desktop{
-        @include flex();
-        background-image: $Light_Gradient;
-    }
+@include desktop{
+    main{
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        align-items: start;
+        justify-content: center;
 
+        #head{
+            width: 1000px;
+            flex-basis: 90%;
+            margin-bottom: 20px;
+            justify-content: start;
+            position: relative;
+
+            p{
+                margin-left: 10px;
+            }
+            
+            #switch-theme{
+                position: absolute;
+                right: 10px;
+            }
+        }
+
+        h1{
+            flex-basis: 45%;
+            width: 45%;
+            z-index: 10;
+        }
+        
+        nav.filter{
+            flex-basis: 45%;
+            width: 45%;
+            justify-items: end;
+            
+            ul{
+                justify-content: end;
+                margin-right: 5px;
+                li{margin-left: 5px;}
+            }
+        }
+
+        section#extension-list{
+            width: 1000px;
+            flex-basis: 90%;
+            flex-wrap: wrap;
+            flex-direction: row;
+            justify-content: flex-start;
+            justify-items: center;
+
+            .extension-card{
+                margin:5px;
+                flex-basis: 32%;
+            }
+        }
+    }
 }
