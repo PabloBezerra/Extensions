@@ -1,0 +1,56 @@
+//COLORS
+
+//Neutral
+$Neutral_900: hsl(227, 75%, 14%);
+$Neutral_800: hsl(226, 25%, 17%);
+$Neutral_700: hsl(225, 23%, 24%);
+$Neutral_600: hsl(226, 11%, 37%);
+$Neutral_300: hsl(0, 0%, 78%);
+$Neutral_200: hsl(217, 61%, 90%);
+$Neutral_100: hsl(0, 0%, 93%);
+$Neutral_0: hsl(200, 60%, 99%);
+
+//Red
+$Red_400: hsl(3, 86%, 64%);
+$Red_500: hsl(3, 71%, 56%);
+$Red_700: hsl(3, 77%, 44%);
+
+//Gradient
+$Light_Gradient: linear-gradient(180deg, #EBF2FC 0%, #EEF8F9 100%);
+$Dark_Gradient: linear-gradient(180deg, #040918 0%, #091540 100%);
+
+//FONT
+
+$font: 'Noto Sans JP', sans-serif;
+
+//FUNCIONS
+
+//Color transparent
+@function color-transparent($color, $alpha) {
+    @return rgba($color, $alpha);
+}
+
+//MIXINS
+
+//Display Flex
+@mixin flex($direction: row, $justify: center, $align: center) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+//Media Queries
+@mixin desktop {
+    @media (min-width: 1024px) {
+        @content;
+    }
+}
+
+//Hover
+@mixin hover {
+    &:hover {
+        border: 1px solid $Red_400;
+        box-shadow: 0 0 1px $Red_400
+    }
+}

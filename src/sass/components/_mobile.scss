@@ -1,0 +1,326 @@
+@use "variables" as *;
+
+main{
+    height: auto;
+    width: 100%;
+    display: flex;
+    font: $font;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    color: $Neutral_0;
+    padding: 20px;
+
+    #head{
+        width: 95%;
+        height: auto;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        background-color: color-transparent($Neutral_0, 30%);
+        border-radius: 10px;
+        padding: 10px;
+
+        img{
+            width: 35px;
+            height: 35px;
+        }
+
+        p{
+            font-family: $font;
+            font-size: 25px;
+            font-weight: 700;
+            color: $Neutral_0;
+        }
+
+        #switch-theme{
+            width: 40px;
+            height: 40px;
+            background-color:color-transparent($Neutral_0, 30%);
+            padding: 5px;
+            border-radius: 10px;
+            @include flex();
+            cursor: pointer;
+            @include hover;
+
+            #dark{
+                display: none;
+            }
+
+            #light{
+                width: 25px;
+                height: 25px;
+                display: block;
+            }
+        }
+    }
+
+    h1{
+        font-family: $font;
+        font-size: 30px;
+        font-weight: 700;
+        color: $Neutral_0;
+        margin-top: 20px;
+    }
+
+    nav.filter{
+        width: 100%;
+        height: auto;
+        margin-top: 20px;
+        @include flex(row,space-around,center);
+
+        ul{
+            width: 95%;
+            height: auto;
+            list-style-type: none;
+            @include flex(row,space-around,center);
+
+            li{
+                width: auto;
+                height: auto;
+                padding: 10px 20px;
+                border-radius: 20px;
+                border: 1px solid $Neutral_600;
+                background-color: $Neutral_700;
+                font-size: 16px;
+                font-weight: 500;
+                cursor: pointer;
+                @include hover;
+
+                &.active{
+                    background-color: $Red_400;
+                    color: $Neutral_900;
+                    border: none;
+                }
+            }
+        }
+
+        #search{
+            padding: 2px;
+            border-radius: 50%;
+            border: 1px solid $Neutral_600;
+            background-color: $Neutral_700;
+            cursor: pointer;
+            @include hover;
+        }
+
+        input{
+            appearance: none;
+            width: 0px;
+            height: 40px;
+            padding: 5px;
+            filter:opacity(0);
+            border-radius: 20px;
+            border: 1px solid $Neutral_600;
+            background-color: $Neutral_700;
+            color: $Neutral_0;
+        }
+
+        #close{
+            display: none;
+            cursor: pointer;
+        }
+
+        &.search{
+            ul{
+                width: 0px;
+                height: 0px;
+                filter:opacity(0)
+            }
+            
+            input{
+                display: flex;
+                width: 80%;
+                filter:opacity(1)
+            }
+
+            #close{display: flex;}
+
+        }
+    }
+
+    section#extension-list{
+        width: 95%;
+        height: auto;
+        min-height: calc(100vh - 200px);
+        margin-top: 20px;
+        @include flex(column,space-around,center);
+        overflow: auto;
+
+        &::-webkit-scrollbar {
+            appearance: none;
+            width: 4px;
+            height: 20px;
+            background-color: transparent;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            appearance: none;
+            background-color: $Neutral_600;
+            border-radius: 10px;
+        }
+
+        .extension-card{
+            width: 100%;
+            max-width: 350px;
+            height: 200px;
+            border-radius: 20px;
+            border: 1px solid $Neutral_600;
+            background-color: $Neutral_700;
+            padding: 20px;
+            @include flex(column,space-between,center);
+            margin-bottom: 15px;
+
+            .info{
+                width: 100%;
+                height: auto;
+                @include flex(row,space-between,center);
+                align-items: start;
+                img{
+                    width: 55px;
+                    height: 55px;
+                }
+                
+                .description{
+                    width: 75%;
+                    height: auto;
+                }
+            }
+
+            .actions{
+                width: 100%;
+                @include flex(row,space-between,center);
+                margin-top: 20px;
+
+                button{
+                    width: 100px;
+                    height: 40px;
+                    background-color: transparent;
+                    border: 2px solid $Neutral_600;
+                    border-radius: 20px;
+                    color: $Neutral_0;
+                    cursor: pointer;
+                    @include hover;
+                }
+    
+                input[type="checkbox"]{
+                    appearance: none;
+                    width: 50px;
+                    height: 28px;
+                    background-color: $Neutral_600;
+                    border-radius: 25px;
+                    position: relative;
+                    cursor: pointer;
+                    transition: background-color 0.3s ease;
+                    @include hover;
+
+                    &::after {
+                        content: "";
+                        position: absolute;
+                        top: 3.5px;
+                        left: 2px;
+                        width: 21px;
+                        height: 21px;
+                        background-color: $Neutral_0;
+                        border-radius: 50%;
+                        transition: transform 0.3s ease;
+                    }
+                    
+                    &:checked {
+                        background-color: $Red_400;
+                    
+                        &::after {
+                          transform: translateX(25px);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &.light-theme{
+        color: $Neutral_900;
+
+        #head{
+            background-color: $Neutral_0;
+            
+            p{
+                color: $Neutral_900;
+            }
+
+            #switch-theme{
+                background-color: $Neutral_100;
+                
+
+                #dark{
+                    display: block;
+                    width: 25px;
+                    height: 25px;
+                }
+
+                #light{
+                    display: none;
+                }
+            }
+        }
+
+        h1{
+            color: $Neutral_900;
+        }
+
+        nav{
+            ul{
+                li{
+                    background-color: $Neutral_0;
+                    border: 1px solid $Neutral_200;
+                }
+            }
+            #search{
+                background-color: $Neutral_0;
+                border: 1px solid $Neutral_200;
+            }
+            input{
+                background-color: $Neutral_0;
+                border: 1px solid $Neutral_200;
+                color: $Neutral_900;
+            }
+        }
+
+        section#extension-list{
+            &::-webkit-scrollbar-thumb{
+                background-color: $Neutral_200;
+            }
+            .extension-card{
+                background-color: $Neutral_0;
+                border: 1px solid $Neutral_200;
+
+                .info{
+                    .description{
+                        h3{
+                            color: $Neutral_900;
+                        }
+                        p{
+                            color: $Neutral_900;
+                        }
+                    }
+                }
+
+                .actions{
+                    button{
+                        background-color: $Neutral_0;
+                        border: 2px solid $Neutral_200;
+                        color: $Neutral_900;
+                    }
+                    input[type="checkbox"]{
+                        background-color: $Neutral_200;
+
+                        &:checked {
+                            background-color: $Red_400;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,38 @@
+{
+  "name": "extensions",
+  "version": "1.0.0",
+  "description": "![Design preview for the Browser extensions manager UI coding challenge](./preview.jpg)",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack serve --hot --mode development"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PabloBezerra/Extensions.git"
+  },
+  "author": "Pablo Bezerra",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PabloBezerra/Extensions/issues"
+  },
+  "homepage": "https://github.com/PabloBezerra/Extensions#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.27.2",
+    "@babel/core": "^7.27.1",
+    "@babel/preset-env": "^7.27.2",
+    "autoprefixer": "^10.4.21",
+    "axios": "^1.9.0",
+    "babel-loader": "^10.0.0",
+    "copy-webpack-plugin": "^13.0.0",
+    "css-loader": "^7.1.2",
+    "html-webpack-plugin": "^5.6.3",
+    "postcss": "^8.5.3",
+    "postcss-loader": "^8.1.1",
+    "sass": "^1.87.0",
+    "sass-loader": "^16.0.5",
+    "style-loader": "^4.0.0",
+    "webpack": "^5.99.8",
+    "webpack-cli": "^6.0.1",
+    "webpack-dev-server": "^5.2.1"
+  }
+}
