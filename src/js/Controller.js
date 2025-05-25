@@ -49,7 +49,8 @@ export class Controller {
   }
 
   switchTheme(dom1, dom2){
-    view.addRemoveClass(dom1, 'light-theme');
-    view.addRemoveClass(dom2, 'light-theme');
+    console.log(dom1, dom2);
+    view.addRemoveClass(dom1,'light-theme');
+    view.addRemoveClass(dom2,'light-theme');
   }
 }

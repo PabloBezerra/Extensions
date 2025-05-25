@@ -41,7 +41,6 @@ export class Server{
             search: ()=> this.mainData.filter(e => e.name.toLowerCase().includes(key))        
         };
         const array = filtros[dom] ? filtros[dom]() : [];
-        console.log(array); 
         return array;
     }
 
