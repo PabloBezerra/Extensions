@@ -2,6 +2,7 @@
 
 @include desktop{
     main{
+        max-width: 1200px;
         display: flex;
         flex-wrap: wrap;
         flex-direction: row;
@@ -48,10 +49,11 @@
             flex-basis: 90%;
             flex-wrap: wrap;
             flex-direction: row;
-            justify-content: flex-start;
-            justify-items: center;
+            justify-content: start;
+            align-items: start;
 
             .extension-card{
+                width: auto;
                 margin:5px;
                 flex-basis: 32%;
             }

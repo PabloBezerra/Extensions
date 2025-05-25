@@ -48,7 +48,8 @@ export class Controller {
     view.print(this.currentData)
   }
 
-  switchTheme(){
-    view.switchTheme();
+  switchTheme(dom1, dom2){
+    view.addRemoveClass(dom1, 'light-theme');
+    view.addRemoveClass(dom2, 'light-theme');
   }
 }

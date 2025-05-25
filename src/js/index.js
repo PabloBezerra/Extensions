@@ -7,6 +7,7 @@ import { View } from "./View.js";
 import { Server } from "./Server.js";
 
 //DOM elements
+const body = document.querySelector('body');
 const main = document.querySelector('main');
 const head = document.querySelector('#head');
 const nav = document.querySelector('nav');
@@ -26,7 +27,7 @@ document.addEventListener('DOMContentLoaded', e => {
 
 // change theme
 head.addEventListener('click', e  => {
-    if (e.currentTarget.id) controller.switchTheme();
+    if (e.currentTarget.id) controller.switchTheme(body, main);
 })
 
 // extensions active filter

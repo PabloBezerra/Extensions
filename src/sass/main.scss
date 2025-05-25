@@ -12,8 +12,14 @@
     behavior: smooth;
 }
 
-html,body{
-    width: 100vw;
+body{
+    @include flex(column, center, center);
+    width: 98vw;
     min-height: 100vh;
     height: auto;
+    background-image: $Dark_Gradient; 
+    
+    &.light-theme{
+        background-image: $Light_Gradient;
+    }
 }

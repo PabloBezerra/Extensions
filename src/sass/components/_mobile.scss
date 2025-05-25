@@ -8,7 +8,6 @@ main{
     flex-direction: column;
     align-items: center;
     justify-content: start;
-    background-image: $Dark_Gradient;
     color: $Neutral_0;
     padding: 20px;
 
@@ -43,6 +42,7 @@ main{
             border-radius: 10px;
             @include flex();
             cursor: pointer;
+            @include hover;
 
             #dark{
                 display: none;
@@ -86,6 +86,7 @@ main{
                 font-size: 16px;
                 font-weight: 500;
                 cursor: pointer;
+                @include hover;
 
                 &.active{
                     background-color: $Red_400;
@@ -101,6 +102,7 @@ main{
             border: 1px solid $Neutral_600;
             background-color: $Neutral_700;
             cursor: pointer;
+            @include hover;
         }
 
         input{
@@ -199,6 +201,7 @@ main{
                     border-radius: 20px;
                     color: $Neutral_0;
                     cursor: pointer;
+                    @include hover;
                 }
     
                 input[type="checkbox"]{
@@ -210,6 +213,7 @@ main{
                     position: relative;
                     cursor: pointer;
                     transition: background-color 0.3s ease;
+                    @include hover;
 
                     &::after {
                         content: "";
@@ -236,7 +240,6 @@ main{
     }
 
     &.light-theme{
-        background-image: $Light_Gradient;
         color: $Neutral_900;
 
         #head{

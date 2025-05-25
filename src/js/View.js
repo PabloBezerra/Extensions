@@ -57,19 +57,6 @@ export class View{
             }
             e.classList.remove('active');
         });
-    }
-
-    switchTheme(){
-        if(this.main.classList.contains('dark-theme')){
-            this.main.classList.remove('dark-theme');
-            this.main.classList.add('light-theme');
-            return;
-        }
-        if(this.main.classList.contains('light-theme')){
-            this.main.classList.remove('light-theme');
-            this.main.classList.add('dark-theme');
-            return;
-        }
     }   
 
     addRemoveClass(dom, className){

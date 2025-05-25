@@ -1,14 +1,15 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
-    mode: 'development',
+    mode: 'production',
     entry: './src/js/index.js',
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'bundle.js',
     },
-    devtool:'source-map',
+    //devtool:'source-map',
     module:{
         rules:[
             {
@@ -27,13 +28,22 @@ module.exports = {
             },
             {
                 test: /\.svg$/i,
-                type: 'asset/resource', // salva como arquivo separado e retorna a URL
+                type: 'asset/resource',
+                include: path.resolve(__dirname, 'src/assets'),
             },
         ]
     },
     plugins: [
         new HtmlWebpackPlugin({
             template: './dist/index.html',
+        }),
+        new HtmlWebpackPlugin({
+            template: './dist/index.html',
+        }),
+        new CopyWebpackPlugin({
+            patterns: [
+                { from: 'src/images', to: 'images' }
+            ]
         })
     ],
     devServer: {

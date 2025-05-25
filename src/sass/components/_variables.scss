@@ -46,3 +46,11 @@ $font: 'Noto Sans JP', sans-serif;
         @content;
     }
 }
+
+//Hover
+@mixin hover {
+    &:hover {
+        border: 1px solid $Red_400;
+        box-shadow: 0 0 1px $Red_400
+    }
+}
