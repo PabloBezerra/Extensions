@@ -2,10 +2,11 @@ const axios = require('axios');
 
 export class Server{
     constructor(){
-        this.url = 'data.json'
-        this.mainData = [];
+        this.url = 'data.json' // URL to fetch data from
+        this.mainData = []; // Array to store the main data
     }
 
+    // Retrieves data from localStorage or fetches it from the server if not available
     getData(){
         if(localStorage.getItem('data') === null){
             this.request();
@@ -14,6 +15,7 @@ export class Server{
         return this.mainData;
     }
 
+    // Fetches data from the server and stores it in localStorage
     request(){
         axios
             .get(this.url)
@@ -25,6 +27,7 @@ export class Server{
             });
     }
 
+    // Recovers data from localStorage and parses it into the mainData array
     recover(){
         if(localStorage.getItem('data') !== null){
             this.mainData = JSON.parse(localStorage.getItem('data'));
@@ -33,6 +36,7 @@ export class Server{
         }
     }
 
+    // Filters the mainData array based on the specified criteria (dom) and key
     filter(dom, key = ''){
         const filtros = {
             all: () => this.mainData,
@@ -44,11 +48,13 @@ export class Server{
         return array;
     }
 
-    remove(id){
+    // Removes an item from the mainData array based on its id and updates localStorage
+    rename(id){
         this.mainData = this.mainData.filter(e => e.name.replace(" ", "-") !== id);
         localStorage.setItem('data', JSON.stringify(this.mainData));
     }
 
+    // Toggles the active state of an item in the mainData array based on its id and updates localStorage
     actived(id){
         this.mainData.forEach(e => {
             if(e.name.replace(" ", "-") === id){

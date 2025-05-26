@@ -1,11 +1,11 @@
 export class View{
-    constructor(list, nav, main){
+    constructor(list, nav){
         this.list = list;
         this.nav = nav;
-        this.main = main;
     }
     
-    print(data){
+    // Receives an array of data and creates a card for each extension, displaying its logo, name, description, and actions.
+    print(data){ 
         data.forEach(e => {
             const divInfo = document.createElement('div');
             const divDescrition = document.createElement('div');
@@ -45,10 +45,12 @@ export class View{
         });
     }
 
+    // Clears the list of extensions by removing all child elements from the list container.
     clear(){
         this.list.innerText = '';
     }
 
+    // Activates a navigation item by adding the 'active' class to it and removing it from all other items.
     activeNav(id){
         this.nav.forEach(e => {
             if(e.id === id){
@@ -59,6 +61,7 @@ export class View{
         });
     }   
 
+    // Adds or removes a class from a DOM element based on whether it already has that class.
     addRemoveClass(dom, className){
         if(dom.classList.contains(className)){
             dom.classList.remove(className);

@@ -54,7 +54,7 @@
         "isActive": true
     },
     {
-        "logo": "..images/logo-link-checker.svg",
+        "logo": "images/logo-link-checker.svg",
         "name": "LinkChecker",
         "description": "Scans and highlights broken links on any page.",
         "isActive": true
