@@ -31,13 +31,18 @@ Users should be able to:
 - View the hover and focus states for all interactive elements on the page
 
 ### Screenshot
+![image](https://github.com/user-attachments/assets/18913451-1cba-4e10-9e6a-c09743e9b691) 
+![image](https://github.com/user-attachments/assets/5e0390ae-591a-4f7c-aed6-57010191257f)
+![image](https://github.com/user-attachments/assets/8d09daee-2fc0-44f6-8557-2a1d83f4c283)
+![image](https://github.com/user-attachments/assets/257c4e76-f262-466b-87ff-c75f0568e344)
+
 
 ![](./screenshot.jpg)
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [Solution](https://www.frontendmentor.io/solutions/extensions-create-with-webpack-and-its-plugins-5NVchYFE-j)
+- Live Site URL: [Live Site](https://pablobezerra.github.io/Extensions/)
 
 ## My process
 
